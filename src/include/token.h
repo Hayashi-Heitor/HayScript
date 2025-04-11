@@ -1,5 +1,6 @@
 #ifndef TOKEN_H
 #define TOKEN_H
+
 typedef struct TOKEN_S {
 
     enum {
@@ -15,4 +16,5 @@ typedef struct TOKEN_S {
 } token_t;
 
 token_t *tokenInit(int type, char *value);
+
 #endif

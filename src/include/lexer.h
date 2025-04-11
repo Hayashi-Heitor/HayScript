@@ -23,4 +23,5 @@ token_t *lexerCollectId(lexer_t *lexer);
 token_t *lexerAdvanceWithToken(lexer_t *lexer, token_t *token);
 
 char *lexerGetCurrentCharAsString(lexer_t *lexer);
+
 #endif
