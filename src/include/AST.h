@@ -12,7 +12,7 @@ typedef struct AST_S {
     } type;
 
     char *variableDefinitionVariableName;
-    struct AST_S *variableDefinitionVvalue;
+    struct AST_S *variableDefinitionValue;
 
     char *variableName;
     
@@ -22,7 +22,7 @@ typedef struct AST_S {
     
     char *stringValue;
 
-    struct AST_S **compountValue;
+    struct AST_S **compoundValue;
     size_t compoundSize;
 } ast_t;
 

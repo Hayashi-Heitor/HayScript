@@ -16,9 +16,9 @@ ast_t *parserParse(parser_t *parser);
 
 ast_t *parserParseStatement(parser_t *parser);
 
-ast_t *parserParserMultipleStatements(parser_t *parser);
+ast_t *parserParseMultipleStatements(parser_t *parser);
 
-ast_t *parserParserExperssion(parser_t *parser);
+ast_t *parserParseExpression(parser_t *parser);
 
 ast_t *parserParseFactor(parser_t *parser);
 
@@ -26,7 +26,9 @@ ast_t *parserParseTerm(parser_t *parser);
 
 ast_t *parserParseFunctionCall(parser_t *parser);
 
-ast_t *parseParseVariable(parser_t *parser);
+ast_t *parserParseVariableDefinition(parser_t *parser);
+
+ast_t *parserParseVariable(parser_t *parser);
 
 ast_t *parserParseString(parser_t *parser);
 

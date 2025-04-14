@@ -5,7 +5,7 @@ ast_t *astInit(int type) {
     ast->type = type;
 
     ast->variableDefinitionVariableName = (void*) 0;
-    ast->variableDefinitionVvalue = (void*) 0;
+    ast->variableDefinitionValue = (void*) 0;
 
     ast->variableName = (void*) 0;
     
@@ -15,7 +15,7 @@ ast_t *astInit(int type) {
     
     ast->stringValue = (void*) 0;
 
-    ast->compountValue = (void*) 0;
+    ast->compoundValue = (void*) 0;
     ast->compoundSize = 0;
     return ast;
 }
