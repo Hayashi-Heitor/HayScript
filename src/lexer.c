@@ -44,9 +44,10 @@ token_t *lexerGetNextToken(lexer_t *lexer) {
             case ';': return lexerAdvanceWithToken(lexer, tokenInit(TOKEN_SEMI, lexerGetCurrentCharAsString(lexer))); break;
             case '(': return lexerAdvanceWithToken(lexer, tokenInit(TOKEN_LPAREN, lexerGetCurrentCharAsString(lexer))); break;
             case ')': return lexerAdvanceWithToken(lexer, tokenInit(TOKEN_RPAREN, lexerGetCurrentCharAsString(lexer))); break;
+            case ',': return lexerAdvanceWithToken(lexer, tokenInit(TOKEN_COMMA, lexerGetCurrentCharAsString(lexer))); break;
         }
     }
-    return (void*)0;
+    return tokenInit(TOKEN_EOF, "\0");
 }
 
 token_t *lexerCollectString(lexer_t *lexer) {
