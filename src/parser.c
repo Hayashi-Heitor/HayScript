@@ -35,6 +35,8 @@ ast_t *parserParseStatement(parser_t *parser) {
     switch (parser->currentToken->type) {
         case TOKEN_ID: return(parserParseId(parser));
     }
+
+    return astInit(AST_NO_OP);
 }
 
 // Parses multiple statements separated by semicolons
@@ -45,14 +47,19 @@ ast_t *parserParseMultipleStatements(parser_t *parser) {
 
     ast_t *astStatement = parserParseStatement(parser);
     compound->compoundValue[0] = astStatement;
+    compound->compoundSize++;
 
     while (parser->currentToken->type == TOKEN_SEMI) {
         parserEat(parser, TOKEN_SEMI);
 
         ast_t *astStatement = parserParseStatement(parser);
-        compound->compoundSize++;
-        compound->compoundValue = realloc(compound->compoundValue, compound->compoundSize * sizeof(struct AST_S*));
-        compound->compoundValue[compound->compoundSize - 1] = astStatement;
+
+        // Checks if the statement is valid
+        if(astStatement) {
+            compound->compoundSize++;
+            compound->compoundValue = realloc(compound->compoundValue, compound->compoundSize * sizeof(struct AST_S*));
+            compound->compoundValue[compound->compoundSize - 1] = astStatement;
+        }
     }
 
     return compound;
@@ -65,6 +72,8 @@ ast_t *parserParseExpression(parser_t *parser) {
         case TOKEN_STRING: return parserParseString(parser); break;
         case TOKEN_ID: return parserParseId(parser);
     }
+
+    return astInit(AST_NO_OP);
 }
 
 // Parses a factor (to be implemented)
@@ -89,6 +98,7 @@ ast_t *parserParseFunctionCall(parser_t *parser) {
 
     ast_t *astExpressions = parserParseExpression(parser);
     functionCall->functionCallArguments[0] = astExpressions;
+    functionCall->functionCallArgumentsSize++;
 
     while (parser->currentToken->type == TOKEN_COMMA) {
         parserEat(parser, TOKEN_COMMA);
