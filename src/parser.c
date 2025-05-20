@@ -91,8 +91,8 @@ ast_t *parserParseTerm(parser_t *parser) {
 ast_t *parserParseFunctionCall(parser_t *parser) {
     ast_t *functionCall = astInit(AST_FUNCTION_CALL);
 
-    parserEat(parser, TOKEN_LPAREN);
     functionCall->functionCallName = parser->previousToken->value;
+    parserEat(parser, TOKEN_LPAREN);
 
     functionCall->functionCallArguments = calloc(1, sizeof(struct AST_S*));
 
