@@ -54,6 +54,7 @@ ast_t *visitorVisitVariableDefinition(visitor_t *visitor, ast_t *node) {
 ast_t *visitorVisitVariable(visitor_t *visitor, ast_t *node) {
     for(int i = 0; i < visitor->variableDefinitionsSize; i++) {
         ast_t *def = visitor->variableDefinitions[i];
+        
         if(strcmp(def->variableDefinitionVariableName, node->variableName) == 0)
             return visitorVisit(visitor, def->variableDefinitionValue);
     }
